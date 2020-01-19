@@ -1,0 +1,24 @@
+<h1>Recipes#new</h1>
+<p>Find me in app/views/recipes/new.html.erb</p>
+
+<%= form_tag(recipes_new_path, :method => "get",
+    class: 'navbar-form navbar-left') do %>
+  <div class="input-group">
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+    <div class="input-group-btn">
+      <%= button_tag "Search", :class => 'btn btn-info',:name => nil%>
+    </div>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
