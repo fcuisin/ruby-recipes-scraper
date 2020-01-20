@@ -1,24 +1,36 @@
-<h1>Recipes#new</h1>
-<p>Find me in app/views/recipes/new.html.erb</p>
+<div class="container-fluid">
+    <h1 class="title">Match my Fridge</h1>
+    <h2 class="sub-title">Find out the most yummy recipes matching your ingredients</h2>
 
-<%= form_tag(recipes_new_path, :method => "get",
-    class: 'navbar-form navbar-left') do %>
-  <div class="input-group">
-    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
-    <div class="input-group-btn">
-      <%= button_tag "Search", :class => 'btn btn-info',:name => nil%>
+    <div class="d-flex justify-content-center my-5">
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <%= form_tag(recipes_new_path, :method => "get",
+            class: 'navbar-form navbar-left') do %>
+          <div class="input-group">
+            <%= search_field_tag :search, params[:search], placeholder: "My fridge have ...", class: "form-control" %>
+            <div class="input-group-btn">
+              <%= button_tag "Mix", :class => 'btn btn-success',:name => nil%>
+            </div>
+          </div>
+        <% end %>
+
+        <% if flash[:alert] %>
+          <div class="alert alert-danger">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
 
-<% if flash[:alert] %>
-  <div class="alert alert-danger">
-    <%= flash[:alert] %>
-  </div>
-<% end %>
+    <div class="d-flex justify-content-center my-5" >
+      <% if @search %>
+      <ul>
+        <% @results.each do |result| %>
+          <p>- <%= result.name %></p>
+        <% end %>
+      </ul>
+      <% end %>
 
-<% if flash[:success] %>
-  <div class="alert alert-success">
-    <%= flash[:success] %>
-  </div>
-<% end %>
+    </div>
+
+</div>
