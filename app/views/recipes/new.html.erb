@@ -23,14 +23,19 @@
     </div>
 
     <div class="d-flex justify-content-center my-5" >
+      <div class="col-md-8 col-sm-6 col-xs-12 text-center">
       <% if @search %>
       <ul>
         <% @results.each do |result| %>
-          <p>- <%= result.name %></p>
+          <p><i class="fas fa-utensils"></i> <%= result.name %> | <i class="fas fa-clock"></i> <%= result.duration %> min | <i class="fas fa-star"></i> <%= result.rating %>/5 | <a href="http://www.marmiton.org<%= result.link %>">Start cooking!</a></p>
         <% end %>
       </ul>
       <% end %>
+      </div>
+    </div>
 
+    <div class="d-flex justify-content-center my-5">
+      <p><em>Pssssst : A "Choose your diet" feature is coming</em></p>
     </div>
 
 </div>

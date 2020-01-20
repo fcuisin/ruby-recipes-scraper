@@ -23,7 +23,10 @@ class RecipesController < ApplicationController
     doc.search(".recipe-card").first(5).each do |element|
     # 3. Create recipe and store it in results
       name = element.search('.recipe-card__title').text.strip
-      @results << Recipe.new(name: name)
+      duration = element.search('.recipe-card__duration__value').text.strip
+      rating = element.search('.recipe-card__rating__value').text.strip
+      link = element.search('.recipe-card-link').attribute('href').value
+      @results << Recipe.new(name: name, duration: duration, rating: rating, link: link)
     end
   end
 end
